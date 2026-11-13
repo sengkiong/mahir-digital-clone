@@ -1,0 +1,15 @@
+---
+import { pillars } from "../data/content";
+---
+<section class="container-x pb-16" aria-labelledby="pillars-title">
+  <h2 id="pillars-title" class="sr-only">Tiga prinsip kami</h2>
+  <ul class="grid gap-4 md:grid-cols-3" data-reveal-group>
+    {pillars.map((p) => (
+      <li class="card-hover">
+        <p class="font-display text-2xl font-semibold text-brand">{p.tag}</p>
+        <h3 class="mt-3 font-semibold">{p.title}</h3>
+        <p class="mt-2 text-muted">{p.body}</p>
+      </li>
+    ))}
+  </ul>
+</section>

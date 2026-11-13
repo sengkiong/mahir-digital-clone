@@ -1,0 +1,23 @@
+---
+import { channels } from "../data/content";
+import Icon from "./Icon.astro";
+---
+<section id="cara-belajar" class="bg-dotted section relative overflow-hidden bg-[linear-gradient(165deg,var(--color-brand),var(--color-brand-dark)_80%)] text-paper" aria-labelledby="channels-title">
+  <div class="container-x relative">
+    <p class="eyebrow text-accent-light!">Cara belajar</p>
+    <h2 id="channels-title" class="h2 mt-3 max-w-2xl">Tiga ritme pendampingan, agar Anda tidak pernah belajar sendirian</h2>
+    <ol class="mt-12 grid gap-5 md:grid-cols-3" data-reveal-group>
+      {channels.map((c, i) => (
+        <li class="rounded-2xl bg-brand-darker/40 p-6 ring-1 ring-white/10 backdrop-blur-sm transition-colors duration-300 hover:bg-brand-darker/60 hover:ring-accent/30">
+          <div class="flex items-center justify-between">
+            <span class="grid size-12 place-items-center rounded-xl bg-accent text-brand-darker shadow-[var(--shadow-accent)]"><Icon name={c.icon} /></span>
+            <span class="font-display text-4xl text-white/40" aria-hidden="true">0{i + 1}</span>
+          </div>
+          <p class="mt-6 text-sm font-semibold tracking-wide text-accent-light">{c.freq}</p>
+          <h3 class="mt-1 text-xl font-semibold">{c.title}</h3>
+          <p class="mt-2 text-brand-soft">{c.body}</p>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>

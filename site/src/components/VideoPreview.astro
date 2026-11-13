@@ -1,0 +1,38 @@
+---
+import { site } from '../config/site';
+import Icon from './Icon.astro';
+const id = site.previewVideoId;
+---
+<section id="video" class="section bg-ink text-paper" aria-labelledby="video-title">
+  <div class="container-x grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+    <div data-reveal>
+      <p class="eyebrow text-accent-light!">Coba dulu, gratis</p>
+      <h2 id="video-title" class="h2 mt-3">Belum yakin? Jangan daftar dulu. Tonton cuplikan kelasnya.</h2>
+      <p class="mt-4 text-lg text-paper/75">Lihat sendiri gaya penjelasan mentor sebelum memutuskan. Kalau tidak cocok, tidak masalah.</p>
+    </div>
+    <!-- Facade: iframe YouTube baru dimuat setelah diklik (hemat ±1 MB & tanpa cookie pihak ketiga di awal) -->
+    <div data-reveal class="bg-dotted relative aspect-video overflow-hidden rounded-2xl bg-brand-darker shadow-[var(--shadow-lift)] ring-1 ring-white/10" data-yt={id}>
+      <div class="absolute inset-0 grid content-end bg-[radial-gradient(circle_at_30%_20%,color-mix(in_oklab,var(--color-brand)_55%,transparent),transparent_60%)] p-6" aria-hidden="true">
+        <p class="font-display text-2xl font-semibold">Cuplikan kelas</p>
+        <p class="text-sm text-paper/70">±12 menit · Membuat kampanye pertama</p>
+      </div>
+      <button type="button" class="group absolute inset-0 grid place-items-center" aria-label="Putar video cuplikan kelas">
+        <span class="grid size-20 place-items-center rounded-full bg-accent text-brand-darker shadow-[var(--shadow-accent)] transition-transform duration-200 group-hover:scale-110"><Icon name="play" class="ml-1 size-8" /></span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-yt]').forEach((box) => {
+    box.querySelector('button')?.addEventListener('click', () => {
+      const iframe = document.createElement('iframe');
+      iframe.src = `https://www.youtube-nocookie.com/embed/${encodeURIComponent(box.dataset.yt ?? '')}?autoplay=1&rel=0`;
+      iframe.title = 'Video cuplikan kelas';
+      iframe.allow = 'autoplay; encrypted-media; picture-in-picture';
+      iframe.allowFullscreen = true;
+      iframe.className = 'absolute inset-0 size-full';
+      box.replaceChildren(iframe);
+    }, { once: true });
+  });
+</script>

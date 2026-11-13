@@ -1,0 +1,21 @@
+---
+import { audiences } from "../data/content";
+import Icon from "./Icon.astro";
+---
+<section class="section" aria-labelledby="audience-title">
+  <div class="container-x">
+    <p class="eyebrow">Untuk siapa</p>
+    <h2 id="audience-title" class="h2 mt-3">Dua jalur, sesuai titik awal Anda</h2>
+    <div class="mt-10 grid gap-5 md:grid-cols-2" data-reveal-group>
+      {audiences.map((a, i) => (
+        <article class:list={['card-hover', i === 1 ? 'border-accent-dark/40 bg-accent-soft' : '']}>
+          <span class:list={['inline-block rounded-full px-3 py-1 text-xs font-semibold', i === 1 ? 'bg-accent-dark/15 text-accent-dark' : 'bg-brand-soft text-brand']}>{a.level}</span>
+          <h3 class="mt-4 text-xl font-semibold">{a.title}</h3>
+          <ul class="mt-5 space-y-3">
+            {a.points.map((p) => <li class="flex gap-3 text-muted"><Icon name="check" class="mt-0.5 size-5 shrink-0 text-brand" />{p}</li>)}
+          </ul>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

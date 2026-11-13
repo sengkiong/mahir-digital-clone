@@ -1,0 +1,47 @@
+---
+import { site, rupiah, waLink } from '../config/site';
+import { valueStack } from '../data/content';
+import Icon from './Icon.astro';
+const { normal, special, period, reason, guaranteeDays } = site.pricing;
+const saving = Math.round((1 - special / normal) * 100);
+---
+<section id="harga" class="section" aria-labelledby="price-title">
+  <div class="container-x">
+    <div class="mx-auto max-w-2xl text-center">
+      <p class="eyebrow">Investasi</p>
+      <h2 id="price-title" class="h2 mt-3">Satu harga, semua termasuk</h2>
+      <p class="lead mt-4">Tanpa biaya tersembunyi dan tanpa upsell di dalam kelas.</p>
+    </div>
+
+    <div class="mx-auto mt-12 grid max-w-5xl gap-6 lg:grid-cols-[1fr_1.1fr]">
+      <div class="card" data-reveal>
+        <h3 class="font-semibold">Yang Anda dapatkan</h3>
+        <ul class="mt-5 divide-y divide-line">
+          {valueStack.map((v) => (
+            <li class="flex items-start justify-between gap-4 py-3">
+              <span class="flex gap-3"><Icon name="check" class="mt-0.5 size-5 shrink-0 text-brand" />{v.item}</span>
+              <span class="shrink-0 text-sm text-muted">senilai {v.worth}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div data-reveal class="relative rounded-2xl p-8 text-paper shadow-[var(--shadow-brand)] ring-1 ring-white/10">
+        <div class="bg-dotted absolute inset-0 -z-10 overflow-hidden rounded-2xl bg-[linear-gradient(165deg,var(--color-brand),var(--color-brand-dark)_80%)]"></div>
+        <span class="absolute -top-3 right-6 rounded-full bg-accent px-3 py-1 text-xs font-bold text-brand-darker shadow-[var(--shadow-accent)]">Hemat {saving}%</span>
+        <p class="text-brand-soft">Program lengkap · {period}</p>
+        <p class="mt-4 text-lg text-brand-soft/80"><span class="sr-only">Harga normal </span><s>{rupiah(normal)}</s></p>
+        <p class="font-display text-5xl font-semibold sm:text-6xl"><span class="sr-only">Harga sekarang </span>{rupiah(special)}</p>
+        <p class="mt-3 text-sm text-brand-soft">{reason}</p>
+        <a href={site.checkoutUrl} class="btn-accent mt-8 w-full text-lg">Daftar sekarang <Icon name="arrow" class="size-5" /></a>
+        <a href={waLink()} class="mt-3 flex items-center justify-center gap-2 text-sm text-brand-soft underline-offset-4 hover:underline" rel="noopener" target="_blank">
+          <Icon name="wa" class="size-5" /> Masih ragu? Tanya dulu via WhatsApp
+        </a>
+        <div class="mt-8 flex gap-3 rounded-xl bg-brand-darker/50 p-4 ring-1 ring-white/10">
+          <Icon name="shield" class="size-8 shrink-0 text-accent" />
+          <p class="text-sm"><strong class="font-semibold">Garansi {guaranteeDays} hari uang kembali.</strong> Tidak cocok dengan cara belajarnya? Ajukan pengembalian dana penuh dalam {guaranteeDays} hari pertama.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

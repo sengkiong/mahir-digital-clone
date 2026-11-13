@@ -1,0 +1,19 @@
+---
+import { benefits } from '../data/content';
+import { site } from '../config/site';
+---
+<section class="section" aria-labelledby="benefit-title">
+  <div class="container-x">
+    <p class="eyebrow">Bonus belajar di sini</p>
+    <h2 id="benefit-title" class="h2 mt-3">{benefits.length} keuntungan tambahan</h2>
+    <ol class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4" data-reveal-group>
+      {benefits.map((b, i) => (
+        <li class="card-hover">
+          <span class="font-display text-3xl font-semibold text-accent-dark" aria-hidden="true">{i + 1}</span>
+          <h3 class="mt-3 font-semibold">{b.title}</h3>
+          <p class="mt-2 text-sm text-muted">{i === 0 ? `Sudah diikuti ${site.stats.alumni} alumni. ` : ''}{b.body}</p>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>

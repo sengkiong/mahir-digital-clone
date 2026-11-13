@@ -1,0 +1,26 @@
+---
+import { site, waLink } from '../config/site';
+const year = new Date().getFullYear();
+---
+<footer class="relative border-t border-line pb-28 pt-12 md:pb-12">
+  <div class="absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,var(--color-accent-dark),transparent)]" aria-hidden="true"></div>
+  <div class="container-x grid gap-8 md:grid-cols-3">
+    <div>
+      <p class="font-display text-xl font-semibold text-brand-dark">{site.brand}</p>
+      <p class="mt-2 text-sm text-muted">{site.tagline}</p>
+    </div>
+    <nav aria-label="Tautan footer">
+      <ul class="space-y-2 text-sm text-muted">
+        <li><a class="transition-colors hover:text-brand" href="#kurikulum">Kurikulum</a></li>
+        <li><a class="transition-colors hover:text-brand" href="#harga">Harga & garansi</a></li>
+        <li><a class="transition-colors hover:text-brand" href="#faq">FAQ</a></li>
+      </ul>
+    </nav>
+    <ul class="space-y-2 text-sm text-muted">
+      <li><a class="transition-colors hover:text-brand" href={waLink()} target="_blank" rel="noopener">WhatsApp</a></li>
+      <li><a class="transition-colors hover:text-brand" href={`mailto:${site.email}`}>{site.email}</a></li>
+      <li><a class="transition-colors hover:text-brand" href={site.instagram} target="_blank" rel="noopener">Instagram</a></li>
+    </ul>
+  </div>
+  <p class="container-x mt-10 text-xs text-muted">© {year} {site.brand}. Hasil setiap peserta berbeda dan bergantung pada praktik masing-masing.</p>
+</footer>

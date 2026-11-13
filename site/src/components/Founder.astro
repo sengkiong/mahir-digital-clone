@@ -1,0 +1,19 @@
+---
+import { founderPoints } from '../data/content';
+import Icon from './Icon.astro';
+---
+<section class="section bg-accent-soft" aria-labelledby="founder-title">
+  <div class="container-x grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
+    <div data-reveal class="bg-dotted relative mx-auto grid aspect-square w-full max-w-xs place-items-center overflow-hidden rounded-[2rem] bg-[linear-gradient(155deg,var(--color-brand),var(--color-brand-dark)_80%)] text-paper shadow-[var(--shadow-brand)]" aria-hidden="true">
+      <span class="relative font-display text-7xl font-semibold">LD</span>
+    </div>
+    <div data-reveal>
+      <p class="eyebrow">Kenapa program ini ada</p>
+      <h2 id="founder-title" class="h2 mt-3">Jangan habiskan waktu dan budget iklan untuk coba-coba sendirian</h2>
+      <p class="lead mt-5">Ikuti kurikulumnya, dan Anda sudah selangkah di depan, tanpa jatuh ke lubang yang sama dengan kami dulu.</p>
+      <ul class="mt-6 space-y-3">
+        {founderPoints.map((p) => <li class="flex gap-3"><Icon name="check" class="mt-0.5 size-5 shrink-0 text-brand" />{p}</li>)}
+      </ul>
+    </div>
+  </div>
+</section>

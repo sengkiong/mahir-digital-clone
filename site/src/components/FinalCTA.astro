@@ -1,0 +1,15 @@
+---
+import { site, rupiah } from '../config/site';
+import Icon from './Icon.astro';
+---
+<section class="section" aria-labelledby="cta-title">
+  <div class="container-x">
+    <div data-reveal class="bg-dotted relative overflow-hidden rounded-[2rem] bg-[linear-gradient(165deg,var(--color-brand),var(--color-brand-dark)_80%)] px-6 py-14 text-center text-paper shadow-[var(--shadow-brand)] sm:px-12">
+      <div class="relative">
+        <h2 id="cta-title" class="h2 mx-auto max-w-2xl font-semibold">Langkah pertama Anda cukup satu: mulai hari ini</h2>
+        <p class="mx-auto mt-4 max-w-xl text-brand-soft">Akses 12 bulan, pendampingan rutin, dan garansi {site.pricing.guaranteeDays} hari. Semuanya {rupiah(site.pricing.special)}.</p>
+        <a href={site.checkoutUrl} class="btn-accent mt-8 text-lg">Daftar sekarang <Icon name="arrow" class="size-5" /></a>
+      </div>
+    </div>
+  </div>
+</section>
