@@ -6,9 +6,9 @@ export const site = {
   tagline: 'Belajar digital marketing, ditemani sampai jalan.',
   description:
     'Program belajar digital marketing untuk pemula: e-course terstruktur, kelas live mingguan, dan grup diskusi harian bersama mentor.',
-  url: 'https://contoh-domain.id',
+  url: 'https://sengkiong.github.io/mahir-digital-clone',
   locale: 'id_ID',
-  ogImage: '/og-image.svg',
+  ogImage: `${import.meta.env.BASE_URL}og-image.svg`,
 
   // Kontak & tujuan CTA
   whatsapp: '6280000000000', // format internasional tanpa "+"

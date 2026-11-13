@@ -2,9 +2,10 @@ import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
 
-// Ganti dengan domain produksi Anda.
+// Ganti dengan domain produksi Anda (saat ini di-deploy sementara ke GitHub Pages).
 export default defineConfig({
-  site: 'https://contoh-domain.id',
+  site: 'https://sengkiong.github.io',
+  base: '/mahir-digital-clone/',
   integrations: [sitemap()],
   build: {
     // CSS selalu file eksternal → CSP style-src 'self' tanpa 'unsafe-inline'
